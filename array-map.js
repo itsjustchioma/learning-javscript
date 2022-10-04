@@ -11,12 +11,23 @@ console.log(squared);
 
 // 3. If the given input is an array of numbers, return the sum of all the positives ones. If the array is empty or there aren't any positive numbers, return 0.
 const input = [ 1, -4, 12, 0, -3, 29, -150];
-const positive = input.filter(x => x > 0);
-console.log(positive);
+const sum = input.filter(x => x >0).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+console.log(sum);
 
-function sum(total, num){
-    return total + num;
-}
+//4. Calculate the mean and median values of the number elements from the input array.
+ const input = [12, 46, 32, 64];
+  const sum = input.sort((a, b) => a - b);
 
-const s = positive.reduce(sum);
-console.log(s);
+  const sum1 = input
+  .reduce((accumulator, currentValue, index, array) => {
+
+    accumulator.mean += currentValue /  array.length;
+
+    if(Math.abs(index + 1  - array.length / 2) < 1) { 
+      accumulator.median = currentValue 
+    }
+
+    return accumulator;
+  }, { mean: 0, median: 0});
+  
+  console.log(sum, sum1);
